@@ -48,6 +48,7 @@ export const cards: Card[] = [
     id: "ordu-beyi",
     characterName: "Ordu Beyi",
     text: "Ordu Beyi, sınırda düşman keşif birliklerinin görüldüğünü haber veriyor. Ya savunmaya çekil ya da ani bir baskın düzenle.",
+    image: require("../../../assets/cards/ordu_beyi.jpg"),
     left: {
       text: "Baskın düzenle — sürpriz saldırı",
       effects: { asker: 15, kut: 10, aclik: -10 },
@@ -61,6 +62,7 @@ export const cards: Card[] = [
     id: "halk-temsilcisi",
     characterName: "Halk Temsilcisi",
     text: "Halk ayaklanmanın eşiğinde. Vergiler çok ağır ve adaletsizlik had safhada.",
+    image: require("../../../assets/cards/halk_temsilcisi.jpg"),
     left: {
       text: "Vergileri indir ve adaleti yeniden tesis et",
       effects: { halk: 20, aclik: -10, asker: -10 },
@@ -74,6 +76,7 @@ export const cards: Card[] = [
     id: "demirci",
     characterName: "Demirci",
     text: "Yaşlı demirci, gökten düşen bir göktaşından dövülmüş efsanevi bir kılıç getirdi. Onu sana armağan etmek istiyor.",
+    image: require("../../../assets/cards/demirci.jpg"),
     left: {
       text: "Kılıcı kabul et ve demirciyi ödüllendir",
       effects: { asker: 15, kut: 10, aclik: -5 },
@@ -87,6 +90,7 @@ export const cards: Card[] = [
     id: "akinci",
     characterName: "Akıncı",
     text: "Akıncılar, yağma için zengin bir kervanın yolda olduğunu rapor etti. Fırsat ama riskli.",
+    image: require("../../../assets/cards/akıncı.jpg"),
     left: {
       text: "Kervana saldır — ganimet lazım",
       effects: { aclik: 15, asker: 10, halk: -5 },
@@ -100,6 +104,7 @@ export const cards: Card[] = [
     id: "kuraklik",
     characterName: "Yağmurcu",
     text: "Kuraklık toprakları kavuruyor. Yağmurcu, Tanrı'ya kurban sunulması gerektiğini söylüyor.",
+    image: require("../../../assets/cards/yagmurcu.jpg"),
     left: {
       text: "Kurban sunulmasına izin ver",
       effects: { kut: 15, halk: 5, aclik: 10 },
@@ -113,6 +118,7 @@ export const cards: Card[] = [
     id: "bilge",
     characterName: "Bilge",
     text: "Dağlardan inen bilge bir ihtiyar, sana eski bir yazıtın sırrını fısıldıyor. Bu bilgi büyük güç ama büyük bedel getirebilir.",
+    image: require("../../../assets/cards/bilge.jpg"),
     left: {
       text: "Sırrı öğren ve kullan",
       effects: { kut: 20, halk: -5, aclik: -5 },
@@ -126,6 +132,7 @@ export const cards: Card[] = [
     id: "ruh",
     characterName: "Atalar Ruhu",
     text: "Bir rüyanda atalarının ruhu sana göründü. Ya törene katılacaksın ya da onları görmezden geleceksin.",
+    image: require("../../../assets/cards/atalar_ruhu.jpg"),
     left: {
       text: "Törene katıl ve ataları onurlandır",
       effects: { kut: 20, halk: 10 },
@@ -139,6 +146,7 @@ export const cards: Card[] = [
     id: "kagan",
     characterName: "Kağan",
     text: "Bozkırın hakimi Kağan, seni huzuruna çağırdı. Gözlerinde hem bir babanın sıcaklığı hem de bir kartalın keskin bakışı var. 'Oğul, taht sınavı başlıyor' dedi.",
+    image: require("../../../assets/cards/kagan.jpg"),
     left: {
       text: "Önünde eğil ve sadakatini sun",
       effects: { halk: 15, kut: 10, asker: 5 },
@@ -154,6 +162,7 @@ export const cards: Card[] = [
     id: "goc-hazirlik",
     characterName: "Göçebe",
     text: "Sınır boylarındaki göçebe boylar, otlakların kuruduğunu söyleyerek doğuya göç etmek için izin istiyor.",
+    image: require("../../../assets/cards/gocebe.jpg"),
     left: {
       text: "İzin ver — giden gitsin, bozkır geniş",
       effects: { halk: -5, aclik: 5, asker: -5 },
@@ -168,6 +177,7 @@ export const cards: Card[] = [
     id: "goc-yolculuk",
     characterName: "Göçebe",
     text: "Göç kervanı yola çıktı. Ancak yolda düşman akıncılarının pususuna düştüler. Yardım mı göndereceksin yoksa kaderlerine mi bırakacaksın?",
+    image: require("../../../assets/cards/gocebe.jpg"),
     left: {
       text: "Yardım gönder — göçebeleri kurtar",
       effects: { halk: 10, asker: -10, kut: 5 },
@@ -183,6 +193,7 @@ export const cards: Card[] = [
     id: "dusman-istihbarat",
     characterName: "Casus",
     text: "Bir casus, kuzeydeki düşman boyunun büyük bir baskın hazırlığında olduğunu bildirdi. Ya önleyici bir saldırı düzenle ya da savunma hazırlığı yap.",
+    image: require("../../../assets/cards/casus.jpg"),
     left: {
       text: "Önleyici saldırı — fırsatı kaçırma",
       effects: { asker: 10, kut: 5, aclik: -5 },
@@ -197,6 +208,7 @@ export const cards: Card[] = [
     id: "dusman-savunma",
     characterName: "Ordu Beyi",
     text: "Saldırı başladı! Düşman beklediğimizden daha güçlü. Orduyu ileri mi süreceksin yoksa geri mi çekileceksin?",
+    image: require("../../../assets/cards/ordu_beyi.jpg"),
     left: {
       text: "İleri! Savaş meydanında ölüm de var şan da",
       effects: { asker: 15, kut: 10, halk: -5 },
@@ -212,6 +224,7 @@ export const cards: Card[] = [
     id: "kutsal-armagan",
     characterName: "Şaman",
     text: "Gökyüzünde üç gün boyunca kızıl bir ay göründü. Şaman, bunun Tanrı'nın bir çağrısı olduğunu ve büyük bir kurban töreni yapılması gerektiğini söylüyor.",
+    image: require("../../../assets/cards/shaman.jpg"),
     left: {
       text: "Tören için hazırlıklara başla",
       effects: { kut: 10, aclik: -5, halk: 5 },
@@ -226,6 +239,7 @@ export const cards: Card[] = [
     id: "kutsal-toren",
     characterName: "Şaman",
     text: "Tören alanı hazır. Kutsal ateş yakıldı, davullar çalıyor. Şaman, kurban olarak en değerli atını istiyor. Verecek misin?",
+    image: require("../../../assets/cards/shaman.jpg"),
     left: {
       text: "Atımı ver — Tanrı katında değerli olsun",
       effects: { kut: 20, asker: -10, halk: 10 },
@@ -241,6 +255,7 @@ export const cards: Card[] = [
     id: "ticaret-anlasma",
     characterName: "Tüccar",
     text: "Güneyden zengin bir tüccar kervanı geldi. İpek ve baharat karşılığında erzak ve at teklif ediyorlar. Anlaşma yapmak istiyorlar ama önce gümrük vergisinde indirim istiyorlar.",
+    image: require("../../../assets/cards/tuccar.jpg"),
     left: {
       text: "Vergi indirimi yap — uzun vadeli kazanç",
       effects: { halk: 10, asker: 5, aclik: 10 },
@@ -255,6 +270,7 @@ export const cards: Card[] = [
     id: "ticaret-sonuc",
     characterName: "Tüccar",
     text: "Ticaret anlaşması meyvelerini vermeye başladı. Kervanlar düzenli olarak geliyor, şehir canlandı. Ancak bazı yerel esnaf, yabancı tüccarlar yüzünden işlerinin bozulduğundan şikayetçi.",
+    image: require("../../../assets/cards/tuccar.jpg"),
     left: {
       text: "Yerel esnafı koru — ticareti sınırla",
       effects: { halk: 15, aclik: -5, asker: -5 },
@@ -270,6 +286,7 @@ export const cards: Card[] = [
     id: "isyan-haber",
     characterName: "Haberci",
     text: "Kuzeydeki bir kasabada halk ayaklandı! Vergi memurlarını kovmuşlar ve kasabayı ele geçirmişler. İsyan büyümeden müdahale etmelisin.",
+    image: require("../../../assets/cards/haberci.jpg"),
     left: {
       text: "Asker gönder — isyanı bastır",
       effects: { asker: -10, halk: -10, kut: -5 },
@@ -284,6 +301,7 @@ export const cards: Card[] = [
     id: "isyan-sonuc",
     characterName: "Haberci",
     text: "İsyan kanlı bir şekilde bastırıldı. Kasaba kül oldu, halk korku içinde. Askerlerin zafer kazandı ama kayıplar ağır oldu.",
+    image: require("../../../assets/cards/haberci.jpg"),
     left: {
       text: "Ağır vergiler koy — isyanın bedelini ödesinler",
       effects: { halk: -15, asker: 10, aclik: 10 },
@@ -299,6 +317,7 @@ export const cards: Card[] = [
     id: "veba-haber",
     characterName: "Hekim",
     text: "Hekim, doğu sınırındaki köylerde veba salgını başladığını bildirdi. Salgın hızla yayılıyor. Ya karantina uygula ya da yardım gönder.",
+    image: require("../../../assets/cards/hekim.jpg"),
     left: {
       text: "Sıkı karantina — kimse girip çıkmasın",
       effects: { halk: -10, asker: -5, aclik: 5 },
@@ -313,6 +332,7 @@ export const cards: Card[] = [
     id: "veba-karantina",
     characterName: "Hekim",
     text: "Karantina bölgesi kuruldu. Ancak karantinadakiler açlıkla mücadele ediyor ve dışarı çıkmak için isyan çıkarmak üzereler. Kapıları açık tutmak zorundasın.",
+    image: require("../../../assets/cards/hekim.jpg"),
     left: {
       text: "Kapıları aç — halk ölmesin",
       effects: { halk: 10, aclik: 5, asker: -10 },
@@ -327,6 +347,7 @@ export const cards: Card[] = [
     id: "veba-son",
     characterName: "Hekim",
     text: "Salgın nihayet duruldu. Binlerce kişi öldü ama krallık ayakta kaldı. Şimdi yeniden inşa zamanı.",
+    image: require("../../../assets/cards/hekim.jpg"),
     left: {
       text: "Yeniden inşa için seferberlik başlat",
       effects: { halk: 15, aclik: 5, asker: -5 },
@@ -342,6 +363,7 @@ export const cards: Card[] = [
     id: "harabe-kesif",
     characterName: "Kaşif",
     text: "Bir kaşif, çölde eski bir uygarlıktan kalma harabeler bulduğunu söylüyor. İçeride büyük hazineler olabilir ama lanetli olduğu da söyleniyor.",
+    image: require("../../../assets/cards/kasif.jpg"),
     left: {
       text: "Kazı ekibi gönder — hazineleri bul",
       effects: { asker: -5, aclik: 5, kut: 10 },
@@ -356,6 +378,7 @@ export const cards: Card[] = [
     id: "harabe-ganimet",
     characterName: "Kaşif",
     text: "Harabelerden altınlar, eski silahlar ve bir kristal kafatası çıktı. Askeri gücün artabilir ama bu eşyaların uğursuzluk getireceğinden korkanlar var.",
+    image: require("../../../assets/cards/kasif.jpg"),
     left: {
       text: "Hazineleri hazineye ek — güçlenelim",
       effects: { asker: 15, aclik: 10, kut: -5 },
@@ -371,6 +394,7 @@ export const cards: Card[] = [
     id: "av-partisi",
     characterName: "Avcı",
     text: "Bozkırda bol miktarda geyik ve yaban atı görülmüş. Avcılar büyük bir av partisi düzenlemek istiyor. Bu kıtlık döneminde iyi bir fırsat.",
+    image: require("../../../assets/cards/avci.jpg"),
     conditions: [{ stat: "aclik", operator: "<", value: 30 }],
     left: {
       text: "Av partisine izin ver — et lazım",
@@ -387,6 +411,7 @@ export const cards: Card[] = [
     id: "siginmaci",
     characterName: "Sığınmacı",
     text: "Komşu boyda iç savaş çıktı. Yüzlerce sığınmacı kapına dayandı. Kadın, çocuk, yaşlı... Ya aç kapıyı ya da geri çevir.",
+    image: require("../../../assets/cards/siginmaci.jpg"),
     conditions: [{ stat: "halk", operator: ">", value: 60 }],
     left: {
       text: "Kapıları aç — merhamet göster",
@@ -403,6 +428,7 @@ export const cards: Card[] = [
     id: "kara-haber",
     characterName: "Haberci",
     text: "Kara haber tez yayılır. Savaşta kaybettiğin söylentileri başkentte panik yarattı. Halk senin öldüğünü düşünüyor.",
+    image: require("../../../assets/cards/haberci.jpg"),
     conditions: [{ stat: "kut", operator: "<", value: 30 }],
     left: {
       text: "Hemen başkente dön ve halka seslen",
@@ -419,6 +445,7 @@ export const cards: Card[] = [
     id: "zafer",
     characterName: "Komutan",
     text: "Büyük bir zafer kazandın! Düşman ordusu bozguna uğradı ve sancakları ele geçirildi. Komutanın, düşman topraklarına girilmesini öneriyor.",
+    image: require("../../../assets/cards/komutan.jpg"),
     conditions: [{ stat: "asker", operator: ">", value: 70 }],
     left: {
       text: "İlerle — düşmanı tamamen bitir",
@@ -435,6 +462,7 @@ export const cards: Card[] = [
     id: "kritik",
     characterName: "Vezir",
     text: "Ambarlar neredeyse tamamen boşaldı. Kıtlık kapıda. Vezir, ya komşu boydan zorla erzak almayı ya da halkı küçük porsiyonlarla idare etmeyi öneriyor.",
+    image: require("../../../assets/cards/vezir.jpg"),
     conditions: [{ stat: "aclik", operator: ">", value: 75 }],
     left: {
       text: "Komşu boya baskın düzenle — erzak getir",
@@ -451,6 +479,7 @@ export const cards: Card[] = [
     id: "saray-entrikasi",
     characterName: "Vezir",
     text: "Sarayda bir entrika dönüyor. Vezir, bazı soyluların tahtına göz diktiğini ve gizlice mektuplaştığını bildirdi.",
+    image: require("../../../assets/cards/vezir.jpg"),
     conditions: [{ stat: "halk", operator: ">", value: 65 }],
     left: {
       text: "Soyluları saraya çağır ve yüzleş",
@@ -467,6 +496,7 @@ export const cards: Card[] = [
     id: "altin-buluntu",
     characterName: "Madenci",
     text: "Bir çoban, dağda altın damarı buldu. Madenciler heyecan içinde. Madeni açmak büyük zenginlik getirir ama tanrıların gazabına uğramaktan korkanlar var.",
+    image: require("../../../assets/cards/madenci.jpg"),
     conditions: [{ stat: "kut", operator: ">", value: 60 }],
     left: {
       text: "Madeni aç — zenginlik güçtür",
@@ -483,6 +513,7 @@ export const cards: Card[] = [
     id: "baris-teklifi",
     characterName: "Elçi",
     text: "Uzun yıllardır savaştığın komşu boydan bir barış elçisi geldi. Kız alıp vermek ve sınırları belirlemek istiyorlar. Samimi mi yoksa tuzak mı?",
+    image: require("../../../assets/cards/elci.jpg"),
     conditions: [
       { stat: "asker", operator: ">", value: 50 },
       { stat: "halk", operator: ">", value: 50 },
@@ -502,6 +533,7 @@ export const cards: Card[] = [
     id: "tuzak",
     characterName: "Yabancı",
     text: "Yabancı bir adam, düşman kampının yerini bildiğini söylüyor ve sana rehberlik etmeyi teklif ediyor. Gözlerinde garip bir parıltı var.",
+    image: require("../../../assets/cards/yabanci.jpg"),
     conditions: [{ stat: "kut", operator: "<", value: 25 }],
     left: {
       text: "Adamı takip et — riske değer",
@@ -518,6 +550,7 @@ export const cards: Card[] = [
     id: "goc-dalgasi",
     characterName: "Sınır Muhafızı",
     text: "Sınır muhafızları, büyük bir göç dalgasının yaklaştığını bildirdi. Binlerce insan açlık ve savaştan kaçıyor. Ya yardım et ya da geri çevir.",
+    image: require("../../../assets/cards/sinig_muhafizi.jpg"),
     conditions: [{ stat: "halk", operator: "<", value: 35 }],
     left: {
       text: "Göçmenleri kabul et — güçleniriz",
@@ -534,6 +567,7 @@ export const cards: Card[] = [
     id: "bayram",
     characterName: "Hatun",
     text: "Büyük bir bahar bayramı yaklaşıyor. Hatun, bu yıl bayramın eskisinden daha görkemli olması gerektiğini söylüyor. Bu halkın moralini yükseltir ama hazineden gider.",
+    image: require("../../../assets/cards/hatun.jpg"),
     conditions: [{ stat: "halk", operator: ">", value: 55 }],
     left: {
       text: "Görkemli bir bayram düzenle — halk sevinsin",
@@ -550,6 +584,7 @@ export const cards: Card[] = [
     id: "destan",
     characterName: "Ozan",
     text: "Kutsal dağın eteklerinde yaşayan bir ozan, senin destanını yazmak istiyor. Bunun için geçmişini, savaşlarını ve rüyalarını anlatman gerek.",
+    image: require("../../../assets/cards/ozan.jpg"),
     conditions: [{ stat: "kut", operator: ">", value: 50 }],
     left: {
       text: "Destanı kabul et — adın sonsuza dek yaşasın",
@@ -566,6 +601,7 @@ export const cards: Card[] = [
     id: "okul-kurma",
     characterName: "Bilge",
     text: "Bilge, başkentte bir okul açılmasını öneriyor. Çocuklara okuma yazma ve eskilerin bilgeliği öğretilecek. Uzun vadede faydalı ama kısa vadede masraflı.",
+    image: require("../../../assets/cards/bilge.jpg"),
     conditions: [{ stat: "kut", operator: "<", value: 40 }],
     left: {
       text: "Okulu aç — bilgi güçtür",
@@ -582,6 +618,7 @@ export const cards: Card[] = [
     id: "yangin",
     characterName: "Muhafız",
     text: "Başkentin batı yakasında büyük bir yangın çıktı! Ambarlar ve evler alevler içinde. Halk yardım bekliyor, askerler ise yangının söndürülmesini istiyor.",
+    image: require("../../../assets/cards/muhafiz.jpg"),
     left: {
       text: "Tüm gücü yangına sevk et — halkı kurtar",
       effects: { halk: 15, aclik: -10, asker: -10 },
@@ -597,6 +634,7 @@ export const cards: Card[] = [
     id: "hediye",
     characterName: "Elçi",
     text: "Uzak diyarlardan bir elçi heyeti geldi. Sana altın işlemeli bir zırh, nadir bir kuş ve bilinmeyen otlar getirdiler. Dostluk teklif ediyorlar.",
+    image: require("../../../assets/cards/elci.jpg"),
     left: {
       text: "Hediyeleri kabul et ve onurlandır",
       effects: { kut: 10, halk: 5, asker: 5 },

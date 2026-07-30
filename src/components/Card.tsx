@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     padding: 20,
     zIndex: 3,
-    backgroundColor: "rgba(120, 20, 20, 0.9)",
+    backgroundColor: "rgba(80, 80, 80, 0.9)",
   },
   overlayRight: {
     ...StyleSheet.absoluteFillObject,
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     padding: 20,
     zIndex: 3,
-    backgroundColor: "rgba(20, 100, 50, 0.9)",
+    backgroundColor: "rgba(80, 80, 80, 0.9)",
   },
   overlayText: {
     color: "#fff",
