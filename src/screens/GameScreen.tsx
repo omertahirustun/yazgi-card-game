@@ -32,9 +32,7 @@ export default function GameScreen() {
       <View style={styles.statsSection}>
         <StatBar stats={stats} />
       </View>
-      {currentCard ? (
-        <Card card={currentCard} onSwipe={makeChoice} />
-      ) : null}
+      {currentCard ? <Card card={currentCard} onSwipe={makeChoice} /> : null}
     </View>
   );
 }
@@ -45,6 +43,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#d4d4d4",
   },
   statsSection: {
-    paddingTop: 40,
+    paddingTop: 60,
   },
 });

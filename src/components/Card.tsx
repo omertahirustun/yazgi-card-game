@@ -1,5 +1,12 @@
 import { useEffect, useRef } from "react";
-import { View, Text, StyleSheet, Dimensions, Animated, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Animated,
+  Image,
+} from "react-native";
 import {
   PanGestureHandler,
   State,
@@ -118,7 +125,11 @@ export default function Card({ card, onSwipe }: CardProps) {
 
             <View style={styles.imageOuter}>
               {card.image ? (
-                <Image source={card.image} style={styles.photoImage} resizeMode="cover" />
+                <Image
+                  source={card.image}
+                  style={styles.photoImage}
+                  resizeMode="cover"
+                />
               ) : (
                 <View style={styles.photoPlaceholder}>
                   <Text style={styles.photoInitial}>{initial}</Text>
@@ -141,19 +152,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
-    paddingTop: 30,
+    marginTop: -120,
   },
   slot: {
     width: "100%",
     maxWidth: 400,
     height: SCREEN_HEIGHT * 0.45,
     borderRadius: 20,
-    borderWidth: 2,
-    borderColor: "#ddd",
-    borderStyle: "dashed",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#d0d0d0",
+    backgroundColor: "#fff",
   },
   card: {
     width: "100%",
