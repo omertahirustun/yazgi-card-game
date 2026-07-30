@@ -138,8 +138,10 @@ export default function Card({ card, onSwipe }: CardProps) {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
+    paddingTop: 30,
   },
   slot: {
     width: "100%",
@@ -186,7 +188,7 @@ const styles = StyleSheet.create({
   },
   imageOuter: {
     flex: 1,
-    backgroundColor: "#d4d4d4",
+    backgroundColor: "#fff",
   },
   photoImage: {
     width: "100%",
@@ -196,7 +198,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#d4d4d4",
+    backgroundColor: "#fff",
   },
   photoInitial: {
     color: "#888",
