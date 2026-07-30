@@ -3,6 +3,13 @@ export type StatKey = "aclik" | "kut" | "asker" | "halk";
 export interface Choice {
   text: string;
   effects: Partial<Record<StatKey, number>>;
+  nextCardId?: string;
+}
+
+export interface Condition {
+  stat: StatKey;
+  operator: ">" | "<" | ">=" | "<=" | "==";
+  value: number;
 }
 
 export interface Card {
@@ -12,6 +19,7 @@ export interface Card {
   left: Choice;
   right: Choice;
   image?: any;
+  conditions?: Condition[];
 }
 
 export type GameStatus = "playing" | "dead" | "survived";

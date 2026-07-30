@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { useGameStore } from "../store/gameStore";
 import Card from "../components/Card";
@@ -5,13 +6,21 @@ import StatBar from "../components/StatBar";
 import EndingScreen from "../components/EndingScreen";
 
 export default function GameScreen() {
-  const currentCardIndex = useGameStore((s) => s.currentCardIndex);
+  const currentCardId = useGameStore((s) => s.currentCardId);
   const stats = useGameStore((s) => s.stats);
   const gameStatus = useGameStore((s) => s.gameStatus);
   const deathReason = useGameStore((s) => s.deathReason);
   const cards = useGameStore((s) => s.cards);
+  const cardsPlayedCount = useGameStore((s) => s.cardsPlayedCount);
   const makeChoice = useGameStore((s) => s.makeChoice);
   const restart = useGameStore((s) => s.restart);
+  const startRun = useGameStore((s) => s.startRun);
+
+  useEffect(() => {
+    if (currentCardId === null && gameStatus === "playing") {
+      startRun();
+    }
+  }, [currentCardId, gameStatus, startRun]);
 
   if (gameStatus !== "playing") {
     return (
@@ -19,13 +28,14 @@ export default function GameScreen() {
         <EndingScreen
           status={gameStatus}
           deathReason={deathReason}
+          cardsPlayed={cardsPlayedCount}
           onRestart={restart}
         />
       </View>
     );
   }
 
-  const currentCard = cards[currentCardIndex];
+  const currentCard = cards.find((c) => c.id === currentCardId);
 
   return (
     <View style={styles.container}>

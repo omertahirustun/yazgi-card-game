@@ -13,12 +13,14 @@ const SURVIVE_MESSAGE = "Bütün zorluklara rağmen hayatta kaldın. Şimdilik..
 interface EndingScreenProps {
   status: "dead" | "survived";
   deathReason?: StatKey;
+  cardsPlayed: number;
   onRestart: () => void;
 }
 
 export default function EndingScreen({
   status,
   deathReason,
+  cardsPlayed,
   onRestart,
 }: EndingScreenProps) {
   const message =
@@ -32,6 +34,7 @@ export default function EndingScreen({
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.message}>{message}</Text>
+      <Text style={styles.cardsLabel}>Oynanan Kart: {cardsPlayed}</Text>
       <TouchableOpacity style={styles.button} onPress={onRestart}>
         <Text style={styles.buttonText}>Yeniden Başla</Text>
       </TouchableOpacity>
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 32,
     backgroundColor: "#d4d4d4",
-    gap: 24,
+    gap: 16,
   },
   title: {
     color: "#333",
@@ -60,11 +63,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 28,
   },
+  cardsLabel: {
+    color: "#999",
+    fontSize: 14,
+  },
   button: {
     paddingHorizontal: 32,
     paddingVertical: 14,
     backgroundColor: "#333",
     borderRadius: 8,
+    marginTop: 8,
   },
   buttonText: {
     color: "#fff",

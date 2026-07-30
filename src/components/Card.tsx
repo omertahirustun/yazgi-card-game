@@ -149,10 +149,9 @@ export default function Card({ card, onSwipe }: CardProps) {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
-    marginTop: -120,
+    paddingTop: 70,
   },
   slot: {
     width: "100%",

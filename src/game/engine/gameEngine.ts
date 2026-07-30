@@ -1,4 +1,4 @@
-import { Card, GameResult, GameStatus, StatKey } from "./types";
+import { Card, Condition, GameResult, GameStatus, StatKey } from "./types";
 
 const STAT_MIN = 0;
 const STAT_MAX = 100;
@@ -85,4 +85,60 @@ export function checkGameEnd(
   }
 
   return { status: "playing", stats };
+}
+
+export function evaluateConditions(
+  conditions: Condition[],
+  stats: Record<StatKey, number>
+): boolean {
+  return conditions.every((c) => {
+    const current = stats[c.stat];
+    switch (c.operator) {
+      case "<":
+        return current < c.value;
+      case ">":
+        return current > c.value;
+      case "<=":
+        return current <= c.value;
+      case ">=":
+        return current >= c.value;
+      case "==":
+        return current === c.value;
+    }
+  });
+}
+
+export function getFirstCard(
+  pool: Card[],
+  stats: Record<StatKey, number>
+): Card | null {
+  const available = pool.filter((c) => {
+    if (!c.conditions) return true;
+    return evaluateConditions(c.conditions, stats);
+  });
+  if (available.length === 0) return null;
+  return available[Math.floor(Math.random() * available.length)];
+}
+
+export function pickNextCard(
+  pool: Card[],
+  currentCard: Card,
+  direction: "left" | "right",
+  playedCardIds: Set<string>,
+  stats: Record<StatKey, number>
+): Card | null {
+  const choice = direction === "left" ? currentCard.left : currentCard.right;
+  if (choice.nextCardId) {
+    const forced = pool.find((c) => c.id === choice.nextCardId);
+    if (forced) return forced;
+  }
+
+  const available = pool.filter((c) => {
+    if (playedCardIds.has(c.id)) return false;
+    if (!c.conditions) return true;
+    return evaluateConditions(c.conditions, stats);
+  });
+
+  if (available.length === 0) return null;
+  return available[Math.floor(Math.random() * available.length)];
 }

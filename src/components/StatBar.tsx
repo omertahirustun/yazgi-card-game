@@ -21,6 +21,7 @@ export default function StatBar({ stats }: StatBarProps) {
             <Text style={styles.icon}>{s.icon}</Text>
           </View>
           <Text style={[styles.value, { color: s.color }]}>{stats[s.key]}</Text>
+          <Text style={[styles.label, { color: s.color }]}>{s.label}</Text>
         </View>
       ))}
     </View>
@@ -54,5 +55,9 @@ const styles = StyleSheet.create({
   value: {
     fontSize: 14,
     fontWeight: "bold",
+  },
+  label: {
+    fontSize: 11,
+    fontWeight: "600",
   },
 });
