@@ -143,7 +143,6 @@ function isDelayedTriggerReady(
   turn: number
 ): boolean {
   if (!trigger) return true;
-  if (!flags[trigger.flag]) return false;
 
   const setTurn = flagSetAt[trigger.flag];
   if (setTurn === undefined) return false;

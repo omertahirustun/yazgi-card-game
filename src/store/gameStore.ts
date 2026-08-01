@@ -88,7 +88,7 @@ export const useGameStore = create<GameState>()(
         const newTurn = state.cardsPlayedCount + 1;
         const flagSetAt = { ...state.flagSetAt };
         for (const [flag, value] of Object.entries(newFlags)) {
-          if (value && !state.flags[flag]) {
+          if (state.flags[flag] !== value) {
             flagSetAt[flag] = newTurn;
           }
         }
