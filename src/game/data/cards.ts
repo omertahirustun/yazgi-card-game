@@ -395,7 +395,7 @@ export const cards: Card[] = [
     characterName: "Avcı",
     text: "Bozkırda bol miktarda geyik ve yaban atı görülmüş. Avcılar büyük bir av partisi düzenlemek istiyor. Bu kıtlık döneminde iyi bir fırsat.",
     image: require("../../../assets/cards/avci.jpg"),
-    conditions: [{ stat: "aclik", operator: "<", value: 30 }],
+    conditions: [{ type: "stat", stat: "aclik", operator: "<", value: 30 }],
     left: {
       text: "Av partisine izin ver — et lazım",
       effects: { aclik: 15, halk: 5, asker: 5 },
@@ -412,7 +412,7 @@ export const cards: Card[] = [
     characterName: "Sığınmacı",
     text: "Komşu boyda iç savaş çıktı. Yüzlerce sığınmacı kapına dayandı. Kadın, çocuk, yaşlı... Ya aç kapıyı ya da geri çevir.",
     image: require("../../../assets/cards/siginmaci.jpg"),
-    conditions: [{ stat: "halk", operator: ">", value: 60 }],
+    conditions: [{ type: "stat", stat: "halk", operator: ">", value: 60 }],
     left: {
       text: "Kapıları aç — merhamet göster",
       effects: { halk: 15, aclik: -15, asker: -5 },
@@ -429,7 +429,7 @@ export const cards: Card[] = [
     characterName: "Haberci",
     text: "Kara haber tez yayılır. Savaşta kaybettiğin söylentileri başkentte panik yarattı. Halk senin öldüğünü düşünüyor.",
     image: require("../../../assets/cards/haberci.jpg"),
-    conditions: [{ stat: "kut", operator: "<", value: 30 }],
+    conditions: [{ type: "stat", stat: "kut", operator: "<", value: 30 }],
     left: {
       text: "Hemen başkente dön ve halka seslen",
       effects: { halk: 10, kut: 10, aclik: -5 },
@@ -446,7 +446,7 @@ export const cards: Card[] = [
     characterName: "Komutan",
     text: "Büyük bir zafer kazandın! Düşman ordusu bozguna uğradı ve sancakları ele geçirildi. Komutanın, düşman topraklarına girilmesini öneriyor.",
     image: require("../../../assets/cards/komutan.jpg"),
-    conditions: [{ stat: "asker", operator: ">", value: 70 }],
+    conditions: [{ type: "stat", stat: "asker", operator: ">", value: 70 }],
     left: {
       text: "İlerle — düşmanı tamamen bitir",
       effects: { asker: 15, kut: 10, aclik: -10, halk: -5 },
@@ -463,7 +463,7 @@ export const cards: Card[] = [
     characterName: "Vezir",
     text: "Ambarlar neredeyse tamamen boşaldı. Kıtlık kapıda. Vezir, ya komşu boydan zorla erzak almayı ya da halkı küçük porsiyonlarla idare etmeyi öneriyor.",
     image: require("../../../assets/cards/vezir.jpg"),
-    conditions: [{ stat: "aclik", operator: ">", value: 75 }],
+    conditions: [{ type: "stat", stat: "aclik", operator: ">", value: 75 }],
     left: {
       text: "Komşu boya baskın düzenle — erzak getir",
       effects: { aclik: 20, asker: -5, halk: -5, kut: -5 },
@@ -480,7 +480,7 @@ export const cards: Card[] = [
     characterName: "Vezir",
     text: "Sarayda bir entrika dönüyor. Vezir, bazı soyluların tahtına göz diktiğini ve gizlice mektuplaştığını bildirdi.",
     image: require("../../../assets/cards/vezir.jpg"),
-    conditions: [{ stat: "halk", operator: ">", value: 65 }],
+    conditions: [{ type: "stat", stat: "halk", operator: ">", value: 65 }],
     left: {
       text: "Soyluları saraya çağır ve yüzleş",
       effects: { halk: -10, asker: 5, kut: 10 },
@@ -497,7 +497,7 @@ export const cards: Card[] = [
     characterName: "Madenci",
     text: "Bir çoban, dağda altın damarı buldu. Madenciler heyecan içinde. Madeni açmak büyük zenginlik getirir ama tanrıların gazabına uğramaktan korkanlar var.",
     image: require("../../../assets/cards/madenci.jpg"),
-    conditions: [{ stat: "kut", operator: ">", value: 60 }],
+    conditions: [{ type: "stat", stat: "kut", operator: ">", value: 60 }],
     left: {
       text: "Madeni aç — zenginlik güçtür",
       effects: { aclik: 15, asker: 10, kut: -10, halk: 5 },
@@ -515,8 +515,8 @@ export const cards: Card[] = [
     text: "Uzun yıllardır savaştığın komşu boydan bir barış elçisi geldi. Kız alıp vermek ve sınırları belirlemek istiyorlar. Samimi mi yoksa tuzak mı?",
     image: require("../../../assets/cards/elci.jpg"),
     conditions: [
-      { stat: "asker", operator: ">", value: 50 },
-      { stat: "halk", operator: ">", value: 50 },
+      { type: "stat", stat: "asker", operator: ">", value: 50 },
+      { type: "stat", stat: "halk", operator: ">", value: 50 },
     ],
     left: {
       text: "Barışı kabul et — savaş yeter",
@@ -534,7 +534,7 @@ export const cards: Card[] = [
     characterName: "Yabancı",
     text: "Yabancı bir adam, düşman kampının yerini bildiğini söylüyor ve sana rehberlik etmeyi teklif ediyor. Gözlerinde garip bir parıltı var.",
     image: require("../../../assets/cards/yabanci.jpg"),
-    conditions: [{ stat: "kut", operator: "<", value: 25 }],
+    conditions: [{ type: "stat", stat: "kut", operator: "<", value: 25 }],
     left: {
       text: "Adamı takip et — riske değer",
       effects: { asker: 15, aclik: 5, kut: -15, halk: -5 },
@@ -551,7 +551,7 @@ export const cards: Card[] = [
     characterName: "Sınır Muhafızı",
     text: "Sınır muhafızları, büyük bir göç dalgasının yaklaştığını bildirdi. Binlerce insan açlık ve savaştan kaçıyor. Ya yardım et ya da geri çevir.",
     image: require("../../../assets/cards/sinig_muhafizi.jpg"),
-    conditions: [{ stat: "halk", operator: "<", value: 35 }],
+    conditions: [{ type: "stat", stat: "halk", operator: "<", value: 35 }],
     left: {
       text: "Göçmenleri kabul et — güçleniriz",
       effects: { halk: 15, aclik: -15, asker: 5 },
@@ -568,7 +568,7 @@ export const cards: Card[] = [
     characterName: "Hatun",
     text: "Büyük bir bahar bayramı yaklaşıyor. Hatun, bu yıl bayramın eskisinden daha görkemli olması gerektiğini söylüyor. Bu halkın moralini yükseltir ama hazineden gider.",
     image: require("../../../assets/cards/hatun.jpg"),
-    conditions: [{ stat: "halk", operator: ">", value: 55 }],
+    conditions: [{ type: "stat", stat: "halk", operator: ">", value: 55 }],
     left: {
       text: "Görkemli bir bayram düzenle — halk sevinsin",
       effects: { halk: 15, aclik: -10, kut: 10 },
@@ -585,7 +585,7 @@ export const cards: Card[] = [
     characterName: "Ozan",
     text: "Kutsal dağın eteklerinde yaşayan bir ozan, senin destanını yazmak istiyor. Bunun için geçmişini, savaşlarını ve rüyalarını anlatman gerek.",
     image: require("../../../assets/cards/ozan.jpg"),
-    conditions: [{ stat: "kut", operator: ">", value: 50 }],
+    conditions: [{ type: "stat", stat: "kut", operator: ">", value: 50 }],
     left: {
       text: "Destanı kabul et — adın sonsuza dek yaşasın",
       effects: { kut: 15, halk: 10, aclik: -5 },
@@ -602,7 +602,7 @@ export const cards: Card[] = [
     characterName: "Bilge",
     text: "Bilge, başkentte bir okul açılmasını öneriyor. Çocuklara okuma yazma ve eskilerin bilgeliği öğretilecek. Uzun vadede faydalı ama kısa vadede masraflı.",
     image: require("../../../assets/cards/bilge.jpg"),
-    conditions: [{ stat: "kut", operator: "<", value: 40 }],
+    conditions: [{ type: "stat", stat: "kut", operator: "<", value: 40 }],
     left: {
       text: "Okulu aç — bilgi güçtür",
       effects: { kut: 15, halk: 5, aclik: -10 },
@@ -642,6 +642,264 @@ export const cards: Card[] = [
     right: {
       text: "Hediyeleri reddet — borçlu kalmayalım",
       effects: { halk: -5, kut: -5, aclik: 5 },
+    },
+  },
+
+  // ─── STORY ARC 1: Elçi'nin Yolu ───
+  {
+    id: "elci-ittifak",
+    characterName: "Elçi",
+    text: "Elçi, bozkırın karşı ucundaki güçlü boyun adına bir ittifak teklifiyle geldi. Karşılığında tahıl ve at gönderecekler; tek şartı sınırda ortak otlakları paylaşmak.",
+    image: require("../../../assets/cards/elci.jpg"),
+    left: {
+      text: "Elçiyi geri gönder — güçlü duruş sergile",
+      effects: { asker: 5, kut: -5, halk: -5 },
+      setFlags: { elci_guven: false },
+    },
+    right: {
+      text: "Teklifi kabul et — ittifak bağları kur",
+      effects: { aclik: -10, halk: 10, kut: 5 },
+      setFlags: { elci_guven: true },
+    },
+  },
+  {
+    id: "elci-ziyaret",
+    characterName: "Elçi",
+    text: "Elçi birkaç gün sonra kapına tekrar geldi; yüzünde içten bir gülümseme var. İttifak sayesinde boyunun ürünleri bozkırın dört bir yanına yayıldı. 'Sözünün eri çıktın,' dedi.",
+    image: require("../../../assets/cards/elci.jpg"),
+    conditions: [{ type: "flag", flag: "elci_guven", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "elci_guven" },
+    left: {
+      text: "İttifakı pekiştir — ortak sürüleri yönet",
+      effects: { halk: 10, aclik: -5 },
+      setFlags: { elci_muttefik: true },
+    },
+    right: {
+      text: "Tek taraflı kazanç iste — elçiyi zor duruma sok",
+      effects: { kut: 5, asker: 5, halk: -5 },
+      setFlags: { elci_muttefik: false },
+    },
+  },
+  {
+    id: "elci-kopru",
+    characterName: "Elçi",
+    text: "Elçi bir daha gelmedi. Onun yerine soğuk bir haberci, atından inmeden bir rulo uzattı: 'Boyumuz, kapısını kapatanlarla konuşmaz.' Ardından kara toz bulutunda gözden kayboldu.",
+    image: require("../../../assets/cards/elci.jpg"),
+    conditions: [{ type: "flag", flag: "elci_guven", value: false }],
+    delayedTrigger: { afterTurns: 1, flag: "elci_guven" },
+    left: {
+      text: "Düşmanlığa hazırlan — sınırı güçlendir",
+      effects: { asker: 10, halk: -5 },
+      setFlags: { elci_hasim: true },
+    },
+    right: {
+      text: "Habercinin ardından armağan gönder — ipleri gevşet",
+      effects: { aclik: 5, kut: -5 },
+      setFlags: { elci_hasim: false },
+    },
+  },
+  {
+    id: "elci-hazine",
+    characterName: "Elçi",
+    text: "İttifakın meyveleri geldi: Elçi, orduna bin at ve ambarları dolduracak kadar tahıl gönderdi. İki boy artık tek yumruk gibi. Elçi yeni bir teklifle gülümsüyor.",
+    image: require("../../../assets/cards/elci.jpg"),
+    conditions: [{ type: "flag", flag: "elci_muttefik", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "elci_muttefik" },
+    left: {
+      text: "Sözü uzat — ömür boyu ittifak antlaşması imzala",
+      effects: { halk: 15, aclik: 10 },
+    },
+    right: {
+      text: "Kız alıp verme iste — aileleri kan bağıyla bağla",
+      effects: { kut: 10, asker: 5, aclik: -5 },
+    },
+  },
+  {
+    id: "elci-kirkkapi",
+    characterName: "Elçi",
+    text: "Elçinin boyu, kırk gece boyunca kapına kara bayraklar dikti. Sabah ilk iş sınırda dumanlar yükseldi — kırılan gurur, savaş tohumu olmuştu.",
+    image: require("../../../assets/cards/elci.jpg"),
+    conditions: [{ type: "flag", flag: "elci_hasim", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "elci_hasim" },
+    left: {
+      text: "Gece baskını düzenle — ilk hamleyi sen yap",
+      effects: { asker: 15, halk: -10, aclik: -5 },
+    },
+    right: {
+      text: "Bir barış meclisi topla — son şansı dene",
+      effects: { halk: 15, aclik: 5, asker: -5 },
+    },
+  },
+
+  // ─── STORY ARC 2: Kara Boğanın Kehaneti ───
+  {
+    id: "saman-kesik",
+    characterName: "Şaman",
+    text: "Şaman, sabah duasında kara bir boğanın göğe doğru koştuğunu gördüğünü söylüyor. 'Bu bir uyarı,' diyor. 'Bozkırın ruhları senden bir karar bekliyor.'",
+    image: require("../../../assets/cards/shaman.jpg"),
+    left: {
+      text: "Kehaneti dinle — arınma ayini emret",
+      effects: { kut: 10, aclik: -5 },
+      setFlags: { saman_kehanet: true },
+    },
+    right: {
+      text: "Kehaneti ciddiye alma — yıldızlar siyaset yapmaz",
+      effects: { kut: -10, asker: 5 },
+      setFlags: { saman_kehanet: false },
+    },
+  },
+  {
+    id: "saman-ayin",
+    characterName: "Şaman",
+    text: "Ayin gecesi tamamlandı. Şaman, ateşten alevlerin içinde boğanın yolunu gördü: 'Doğu kapısından bir felaket geliyor. Onu durdurmak için hazır ol.'",
+    image: require("../../../assets/cards/shaman.jpg"),
+    conditions: [{ type: "flag", flag: "saman_kehanet", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "saman_kehanet" },
+    left: {
+      text: "Doğu kapısına muhafızları yerleştir",
+      effects: { asker: 10, aclik: -5 },
+      setFlags: { saman_yardim: true },
+    },
+    right: {
+      text: "Şaman'a daha fazla kurban sun — felaketi savuştur",
+      effects: { kut: 15, aclik: -10 },
+      setFlags: { saman_yardim: false },
+    },
+  },
+  {
+    id: "saman-kayir",
+    characterName: "Şaman",
+    text: "Birkaç gün sonra Şaman'ı saraydan uzakta, bozkırda buldular; taşlara kanla işaretler çizmiş. 'Sen duymadın, ben de anlatmayacağım,' dedi. 'Ama boğa yine gelecek.'",
+    image: require("../../../assets/cards/shaman.jpg"),
+    conditions: [{ type: "flag", flag: "saman_kehanet", value: false }],
+    delayedTrigger: { afterTurns: 1, flag: "saman_kehanet" },
+    left: {
+      text: "Onu dinle — kibir yerine tedbir al",
+      effects: { kut: 10, asker: -5 },
+      setFlags: { saman_kabir: true },
+    },
+    right: {
+      text: "Şaman'ı uzaklaştır — korku halkı zehirler",
+      effects: { halk: 5, kut: -10 },
+      setFlags: { saman_kabir: false },
+    },
+  },
+  {
+    id: "saman-kapi",
+    characterName: "Şaman",
+    text: "Doğu kapısından bir akıncı ordusu gece yarısı geldi. Muhafızların sayesinde hazırlıksız yakalanmadın; düşman dağıtıldı. Şaman'ın ateşi doğru konuşmuştu.",
+    image: require("../../../assets/cards/shaman.jpg"),
+    conditions: [{ type: "flag", flag: "saman_yardim", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "saman_yardim" },
+    left: {
+      text: "Şaman'ı baş danışman yap — ruhların sesi kulaklarında olsun",
+      effects: { kut: 15, halk: 5 },
+    },
+    right: {
+      text: "Bir kehanet tapınağı inşa ettir",
+      effects: { kut: 20, aclik: -5 },
+    },
+  },
+  {
+    id: "saman-cimur",
+    characterName: "Şaman",
+    text: "Bir hafta sonra bozkırda alevler yükseldi. Doğu kapısı yanmış, muhafızlar dağılmıştı. Şaman ağır ağır konuştu: 'Boğa geldi. Kehanete inanmamak, kehaneti gerçekleştirir.'",
+    image: require("../../../assets/cards/shaman.jpg"),
+    conditions: [{ type: "flag", flag: "saman_kabir", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "saman_kabir" },
+    left: {
+      text: "Şaman'ı onurlandır — bozkırın bilgesi olarak an",
+      effects: { kut: 15, halk: 10 },
+    },
+    right: {
+      text: "Küllerin ortasında yeniden inşaya başla",
+      effects: { halk: 15, asker: -5, aclik: 5 },
+    },
+  },
+
+  // ─── STORY ARC 3: Vezirin Pususu ───
+  {
+    id: "vezir-riyadet",
+    characterName: "Vezir",
+    text: "Vezir bir gece yarısı odana gizlice girdi. 'Sarayda bir hain var,' dedi. 'Tahılı çalan, mektupları okuyan biri. Onu bulmam için yetki istiyorum.'",
+    image: require("../../../assets/cards/vezir.jpg"),
+    left: {
+      text: "Vezire tam yetki ver — haini temizlesin",
+      effects: { kut: 5, asker: 5 },
+      setFlags: { vezir_entrika: true },
+    },
+    right: {
+      text: "Yetki verme — vezirin eli fazla uzun",
+      effects: { kut: 5, halk: 5 },
+      setFlags: { vezir_entrika: false },
+    },
+  },
+  {
+    id: "vezir-ag",
+    characterName: "Vezir",
+    text: "Vezir üç muhafızı ve iki katibi zincire vurdu. 'Hainler bunlar,' dedi. 'Ama bir isim daha var — kapına dayandı: Hazine nazırı.'",
+    image: require("../../../assets/cards/vezir.jpg"),
+    conditions: [{ type: "flag", flag: "vezir_entrika", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "vezir_entrika" },
+    left: {
+      text: "İddiayı destekle — hapse atılsınlar",
+      effects: { asker: 10, halk: -10 },
+      setFlags: { vezir_kanit: true },
+    },
+    right: {
+      text: "Kanıt iste — vezirin eli boş kalmasın",
+      effects: { kut: 10, halk: 5 },
+      setFlags: { vezir_kanit: false },
+    },
+  },
+  {
+    id: "vezir-kusku",
+    characterName: "Vezir",
+    text: "Vezir bir hafta sonra tekrar geldi; bu kez elinde mühürlü bir tomar. 'İstersen gözlerinle gör,' dedi. 'Sarayda isyan tohumları ekiliyor.'",
+    image: require("../../../assets/cards/vezir.jpg"),
+    conditions: [{ type: "flag", flag: "vezir_entrika", value: false }],
+    delayedTrigger: { afterTurns: 1, flag: "vezir_entrika" },
+    left: {
+      text: "Tomarı oku — kimin adı varsa onu izle",
+      effects: { asker: -5, kut: 10 },
+      setFlags: { vezir_kacis: true },
+    },
+    right: {
+      text: "Tomarı yak — dedikoduları duymak istemiyorum",
+      effects: { halk: 5, kut: -10 },
+      setFlags: { vezir_kacis: false },
+    },
+  },
+  {
+    id: "vezir-taht",
+    characterName: "Vezir",
+    text: "Mahkemeler kuruldu, hainler sürüldü. Ama kısa süre sonra fark ettin: Vezir, boşalan mevkilere kendi adamlarını yerleştirmişti. Tahtının gölgesinde bir gölge daha büyüyordu.",
+    image: require("../../../assets/cards/vezir.jpg"),
+    conditions: [{ type: "flag", flag: "vezir_kanit", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "vezir_kanit" },
+    left: {
+      text: "Veziri azlet — tahtın etrafını temizle",
+      effects: { halk: 10, kut: 5, asker: -5 },
+    },
+    right: {
+      text: "Veziri yanında tut ama gözünü üstünden ayırma",
+      effects: { asker: 5, kut: -5 },
+    },
+  },
+  {
+    id: "vezir-surgun",
+    characterName: "Vezir",
+    text: "Tomarın üzerindeki adlar gerçek çıktı: Hazine nazırı ve iki ordu beyi. Vezir haklıymış. Saray sarsıldı ama sen ayakta kaldın — vezirin sayesinde.",
+    image: require("../../../assets/cards/vezir.jpg"),
+    conditions: [{ type: "flag", flag: "vezir_kacis", value: true }],
+    delayedTrigger: { afterTurns: 1, flag: "vezir_kacis" },
+    left: {
+      text: "Vezire büyük bir tımar ver — sadakatini ödüllendir",
+      effects: { halk: 10, aclik: 5 },
+    },
+    right: {
+      text: "Veziri baş danışman yap — sarayı o yönetsin",
+      effects: { kut: 10, asker: -5 },
     },
   },
 ];

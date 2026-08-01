@@ -1,4 +1,11 @@
-import { Card, Condition, GameResult, GameStatus, StatKey } from "./types";
+import {
+  Card,
+  Condition,
+  DelayedTrigger,
+  GameResult,
+  GameStatus,
+  StatKey,
+} from "./types";
 
 const STAT_MIN = 0;
 const STAT_MAX = 100;
@@ -26,6 +33,14 @@ function applyEffects(
   return newStats;
 }
 
+function applyFlags(
+  flags: Record<string, boolean>,
+  setFlags?: Record<string, boolean>
+): Record<string, boolean> {
+  if (!setFlags) return flags;
+  return { ...flags, ...setFlags };
+}
+
 function checkDeath(
   stats: Record<StatKey, number>
 ): { isDead: boolean; reason?: StatKey } {
@@ -41,18 +56,25 @@ export function getInitialStats(): Record<StatKey, number> {
   return { ...INITIAL_STATS };
 }
 
+export function getInitialFlags(): Record<string, boolean> {
+  return {};
+}
+
 export interface ProcessedChoice {
   stats: Record<StatKey, number>;
+  flags: Record<string, boolean>;
   result: GameResult;
 }
 
 export function processChoice(
   currentStats: Record<StatKey, number>,
+  currentFlags: Record<string, boolean>,
   card: Card,
   direction: "left" | "right"
 ): ProcessedChoice {
   const choice = direction === "left" ? card.left : card.right;
   const newStats = applyEffects(currentStats, choice.effects);
+  const newFlags = applyFlags(currentFlags, choice.setFlags);
   const deathCheck = checkDeath(newStats);
 
   let status: GameStatus = "playing";
@@ -65,6 +87,7 @@ export function processChoice(
 
   return {
     stats: newStats,
+    flags: newFlags,
     result: { status, stats: newStats, deathReason },
   };
 }
@@ -89,9 +112,14 @@ export function checkGameEnd(
 
 export function evaluateConditions(
   conditions: Condition[],
-  stats: Record<StatKey, number>
+  stats: Record<StatKey, number>,
+  flags: Record<string, boolean>
 ): boolean {
   return conditions.every((c) => {
+    if (c.type === "flag") {
+      return (flags[c.flag] ?? false) === c.value;
+    }
+
     const current = stats[c.stat];
     switch (c.operator) {
       case "<":
@@ -108,14 +136,42 @@ export function evaluateConditions(
   });
 }
 
+function isDelayedTriggerReady(
+  trigger: DelayedTrigger | undefined,
+  flags: Record<string, boolean>,
+  flagSetAt: Record<string, number>,
+  turn: number
+): boolean {
+  if (!trigger) return true;
+  if (!flags[trigger.flag]) return false;
+
+  const setTurn = flagSetAt[trigger.flag];
+  if (setTurn === undefined) return false;
+  return turn - setTurn >= trigger.afterTurns;
+}
+
+export function isCardAvailable(
+  card: Card,
+  stats: Record<StatKey, number>,
+  flags: Record<string, boolean>,
+  flagSetAt: Record<string, number>,
+  turn: number
+): boolean {
+  if (card.conditions && !evaluateConditions(card.conditions, stats, flags)) {
+    return false;
+  }
+  return isDelayedTriggerReady(card.delayedTrigger, flags, flagSetAt, turn);
+}
+
 export function getFirstCard(
   pool: Card[],
-  stats: Record<StatKey, number>
+  stats: Record<StatKey, number>,
+  flags: Record<string, boolean>,
+  flagSetAt: Record<string, number>
 ): Card | null {
-  const available = pool.filter((c) => {
-    if (!c.conditions) return true;
-    return evaluateConditions(c.conditions, stats);
-  });
+  const available = pool.filter((c) =>
+    isCardAvailable(c, stats, flags, flagSetAt, 1)
+  );
   if (available.length === 0) return null;
   return available[Math.floor(Math.random() * available.length)];
 }
@@ -125,7 +181,10 @@ export function pickNextCard(
   currentCard: Card,
   direction: "left" | "right",
   playedCardIds: Set<string>,
-  stats: Record<StatKey, number>
+  stats: Record<StatKey, number>,
+  flags: Record<string, boolean>,
+  flagSetAt: Record<string, number>,
+  turn: number
 ): Card | null {
   const choice = direction === "left" ? currentCard.left : currentCard.right;
   if (choice.nextCardId) {
@@ -135,10 +194,17 @@ export function pickNextCard(
 
   const available = pool.filter((c) => {
     if (playedCardIds.has(c.id)) return false;
-    if (!c.conditions) return true;
-    return evaluateConditions(c.conditions, stats);
+    return isCardAvailable(c, stats, flags, flagSetAt, turn);
   });
 
   if (available.length === 0) return null;
-  return available[Math.floor(Math.random() * available.length)];
+
+  const readyTriggers = available.filter(
+    (c) =>
+      c.delayedTrigger &&
+      isDelayedTriggerReady(c.delayedTrigger, flags, flagSetAt, turn)
+  );
+
+  const candidates = readyTriggers.length > 0 ? readyTriggers : available;
+  return candidates[Math.floor(Math.random() * candidates.length)];
 }

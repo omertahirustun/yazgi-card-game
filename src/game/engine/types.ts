@@ -4,12 +4,21 @@ export interface Choice {
   text: string;
   effects: Partial<Record<StatKey, number>>;
   nextCardId?: string;
+  setFlags?: Record<string, boolean>;
 }
 
-export interface Condition {
-  stat: StatKey;
-  operator: ">" | "<" | ">=" | "<=" | "==";
-  value: number;
+export type Condition =
+  | {
+      type: "stat";
+      stat: StatKey;
+      operator: ">" | "<" | ">=" | "<=" | "==";
+      value: number;
+    }
+  | { type: "flag"; flag: string; value: boolean };
+
+export interface DelayedTrigger {
+  afterTurns: number;
+  flag: string;
 }
 
 export interface Card {
@@ -20,6 +29,7 @@ export interface Card {
   right: Choice;
   image?: any;
   conditions?: Condition[];
+  delayedTrigger?: DelayedTrigger;
 }
 
 export type GameStatus = "playing" | "dead" | "survived";
