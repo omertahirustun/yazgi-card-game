@@ -34,8 +34,11 @@ export interface Card {
 
 export type GameStatus = "playing" | "dead" | "survived";
 
+export type DeathDirection = "min" | "max";
+
 export interface GameResult {
   status: GameStatus;
   stats: Record<StatKey, number>;
   deathReason?: StatKey;
+  deathDirection?: DeathDirection;
 }

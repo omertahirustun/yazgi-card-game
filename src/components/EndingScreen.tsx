@@ -1,11 +1,18 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { StatKey } from "../game/engine/types";
+import { StatKey, DeathDirection } from "../game/engine/types";
 
-const DEATH_MESSAGES: Record<StatKey, string> = {
-  aclik: "Halkın açlığa dayanamadı. Krallığın çöktü.",
+const DEATH_MESSAGES_MIN: Record<StatKey, string> = {
+  aclik: "Halk açlıktan isyana kalktı, seni devirdi.",
   kut: "Kut'u kaybettin. Tanrı seni terk etti.",
   asker: "Ordun dağıldı. Düşmana karşı koyamadın.",
   halk: "Halk ayaklandı ve seni devirdi.",
+};
+
+const DEATH_MESSAGES_MAX: Record<StatKey, string> = {
+  aclik: "Halkın gözü döndü, Tengri seni cezalandırdı.",
+  kut: "Kut'un zirvesinde kibre kapıldın. Gök seni yere çaldı.",
+  asker: "Ordun tahtından güçlendi. Kendi askerlerin sana kılıç çekti.",
+  halk: "Halk seni tanrı yerine koydu. Tengri kıskançlıkla seni yere çaldı.",
 };
 
 const SURVIVE_MESSAGE = "Bütün zorluklara rağmen hayatta kaldın. Şimdilik...";
@@ -13,6 +20,7 @@ const SURVIVE_MESSAGE = "Bütün zorluklara rağmen hayatta kaldın. Şimdilik..
 interface EndingScreenProps {
   status: "dead" | "survived";
   deathReason?: StatKey;
+  deathDirection?: DeathDirection;
   cardsPlayed: number;
   onRestart: () => void;
 }
@@ -20,12 +28,15 @@ interface EndingScreenProps {
 export default function EndingScreen({
   status,
   deathReason,
+  deathDirection,
   cardsPlayed,
   onRestart,
 }: EndingScreenProps) {
   const message =
     status === "dead" && deathReason
-      ? DEATH_MESSAGES[deathReason]
+      ? deathDirection === "max"
+        ? DEATH_MESSAGES_MAX[deathReason]
+        : DEATH_MESSAGES_MIN[deathReason]
       : SURVIVE_MESSAGE;
 
   const title = status === "dead" ? "SON" : "KAÇIŞ YOK";

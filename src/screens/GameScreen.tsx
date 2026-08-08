@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useGameStore } from "../store/gameStore";
 import Card from "../components/Card";
 import StatBar from "../components/StatBar";
@@ -10,11 +10,13 @@ export default function GameScreen() {
   const stats = useGameStore((s) => s.stats);
   const gameStatus = useGameStore((s) => s.gameStatus);
   const deathReason = useGameStore((s) => s.deathReason);
+  const deathDirection = useGameStore((s) => s.deathDirection);
   const cards = useGameStore((s) => s.cards);
   const cardsPlayedCount = useGameStore((s) => s.cardsPlayedCount);
   const makeChoice = useGameStore((s) => s.makeChoice);
   const restart = useGameStore((s) => s.restart);
   const startRun = useGameStore((s) => s.startRun);
+  const year = useGameStore((s) => s.year);
 
   useEffect(() => {
     if (currentCardId === null && gameStatus === "playing") {
@@ -28,6 +30,7 @@ export default function GameScreen() {
         <EndingScreen
           status={gameStatus}
           deathReason={deathReason}
+          deathDirection={deathDirection}
           cardsPlayed={cardsPlayedCount}
           onRestart={restart}
         />
@@ -43,6 +46,7 @@ export default function GameScreen() {
         <StatBar stats={stats} />
       </View>
       {currentCard ? <Card card={currentCard} onSwipe={makeChoice} /> : null}
+      <Text style={styles.year}>MS {year}</Text>
     </View>
   );
 }
@@ -54,5 +58,14 @@ const styles = StyleSheet.create({
   },
   statsSection: {
     paddingTop: 60,
+  },
+  year: {
+    position: "absolute",
+    bottom: 20,
+    alignSelf: "center",
+    color: "#5a5a5a",
+    fontSize: 16,
+    fontWeight: "600",
+    letterSpacing: 1,
   },
 });

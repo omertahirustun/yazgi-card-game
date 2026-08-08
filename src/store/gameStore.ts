@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { GameStatus, StatKey, Card } from "../game/engine/types";
+import { GameStatus, StatKey, Card, DeathDirection } from "../game/engine/types";
 import {
   getInitialStats,
   getInitialFlags,
@@ -18,10 +18,12 @@ interface GameState {
   flagSetAt: Record<string, number>;
   gameStatus: GameStatus;
   deathReason?: StatKey;
+  deathDirection?: DeathDirection;
   cards: Card[];
   cardsPlayedCount: number;
   playedCardIds: Set<string>;
   musicMuted: boolean;
+  year: number;
 
   startRun: () => void;
   makeChoice: (direction: "left" | "right") => void;
@@ -38,10 +40,12 @@ export const useGameStore = create<GameState>()(
       flagSetAt: {},
       gameStatus: "playing" as GameStatus,
       deathReason: undefined,
+      deathDirection: undefined,
       cards: allCards,
       cardsPlayedCount: 0,
       playedCardIds: new Set<string>(),
       musicMuted: false,
+      year: 552,
 
       startRun: () => {
         const { cards } = get();
@@ -53,8 +57,10 @@ export const useGameStore = create<GameState>()(
           flagSetAt: {},
           gameStatus: firstCard ? "playing" : "survived",
           deathReason: undefined,
+          deathDirection: undefined,
           cardsPlayedCount: 0,
           playedCardIds: new Set(),
+          year: 552,
         });
       },
 
@@ -81,6 +87,7 @@ export const useGameStore = create<GameState>()(
             flags: newFlags,
             gameStatus: "dead",
             deathReason: result.deathReason,
+            deathDirection: result.deathDirection,
           });
           return;
         }
@@ -115,6 +122,7 @@ export const useGameStore = create<GameState>()(
           gameStatus: nextCard ? "playing" : "survived",
           cardsPlayedCount: newTurn,
           playedCardIds: newPlayed,
+          year: state.year + 1,
         });
       },
 
@@ -128,8 +136,10 @@ export const useGameStore = create<GameState>()(
           flagSetAt: {},
           gameStatus: firstCard ? "playing" : "survived",
           deathReason: undefined,
+          deathDirection: undefined,
           cardsPlayedCount: 0,
           playedCardIds: new Set(),
+          year: 552,
         });
       },
 
@@ -147,9 +157,11 @@ export const useGameStore = create<GameState>()(
         flagSetAt: state.flagSetAt,
         gameStatus: state.gameStatus,
         deathReason: state.deathReason,
+        deathDirection: state.deathDirection,
         cardsPlayedCount: state.cardsPlayedCount,
         playedCardIds: Array.from(state.playedCardIds),
         musicMuted: state.musicMuted,
+        year: state.year,
       }),
       merge: (persisted, current) => {
         const p = persisted as Partial<GameState> & {

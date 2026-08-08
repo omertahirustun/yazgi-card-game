@@ -43,10 +43,17 @@ function applyFlags(
 
 function checkDeath(
   stats: Record<StatKey, number>
-): { isDead: boolean; reason?: StatKey } {
+): {
+  isDead: boolean;
+  reason?: StatKey;
+  direction?: "min" | "max";
+} {
   for (const key of Object.keys(stats) as StatKey[]) {
-    if (stats[key] <= STAT_MIN || stats[key] >= STAT_MAX) {
-      return { isDead: true, reason: key };
+    if (stats[key] >= STAT_MAX) {
+      return { isDead: true, reason: key, direction: "max" };
+    }
+    if (stats[key] <= STAT_MIN) {
+      return { isDead: true, reason: key, direction: "min" };
     }
   }
   return { isDead: false };
@@ -79,16 +86,18 @@ export function processChoice(
 
   let status: GameStatus = "playing";
   let deathReason: StatKey | undefined;
+  let deathDirection: "min" | "max" | undefined;
 
   if (deathCheck.isDead) {
     status = "dead";
     deathReason = deathCheck.reason;
+    deathDirection = deathCheck.direction;
   }
 
   return {
     stats: newStats,
     flags: newFlags,
-    result: { status, stats: newStats, deathReason },
+    result: { status, stats: newStats, deathReason, deathDirection },
   };
 }
 
@@ -100,7 +109,12 @@ export function checkGameEnd(
   const deathCheck = checkDeath(stats);
 
   if (deathCheck.isDead) {
-    return { status: "dead", stats, deathReason: deathCheck.reason };
+    return {
+      status: "dead",
+      stats,
+      deathReason: deathCheck.reason,
+      deathDirection: deathCheck.direction,
+    };
   }
 
   if (currentCardIndex >= totalCards) {
